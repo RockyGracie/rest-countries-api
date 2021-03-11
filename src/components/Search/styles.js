@@ -23,6 +23,7 @@ export const SearchStyles = styled.div`
 
    input {
       width: 100%;
+      border-radius: 0.3125rem;
       padding-rigth: 0.3125rem;
    }
 
