@@ -8,8 +8,9 @@ import Countries from './components/Countries';
 const App = () => {
 
   const [countries, setCountries] = useState([]);
-  const [filteredCountries, setFilteredCountries] = useState([]);
   const [region, setRegion] = useState('Africa');
+  const [country, setCountry] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -28,11 +29,15 @@ const App = () => {
       <Header />
       <Search 
         setRegion={setRegion}
-        setFilteredCountries={setFilteredCountries}  
+        country={country}
+        setCountry={setCountry}
+        setFilteredCountries={setFilteredCountries}
       />
       <Countries 
         countries={countries}
-        region={region}      
+        region={region}  
+        setFilteredCountries={setFilteredCountries}    
+        filteredCountries={filteredCountries}    
       />
     </>
   );
