@@ -1,45 +1,46 @@
-import { CountriesContainer, Country, CountryInfo } from './styles';
-import Flag from './Flag';
+import { useState, useEffect } from 'react';
+import { CountriesContainer } from './styles';
+import Country from './Country';
+import { FaRegHandPointDown } from 'react-icons/fa';
 
-const Countries = () => {
+const Countries = ({ countries, region }) => {
+
+   const [filteredCountries, setFilteredCountries] = useState([]);
+   console.log(countries); 
+   console.log(filteredCountries);
+   console.log(region);
+
+
+   const filterHandler = () => {
+      switch(region) {
+         case 'Africa':
+            setFilteredCountries(countries && countries.filter(country => country.region === 'Africa'));
+            break
+         case 'America':
+            setFilteredCountries(countries && countries.filter(country => country.region === 'Americas'));
+            break
+         case 'Asia':
+            setFilteredCountries(countries && countries.filter(country => country.region === 'Asia'));
+            break
+         case 'Europe':
+            setFilteredCountries(countries && countries.filter(country => country.region === 'Europe'));
+            break
+         case 'Oceania':
+            setFilteredCountries(countries && countries.filter(country => country.region === 'Oceania'));
+            break
+         default:
+            setFilteredCountries(countries);
+            break;
+      }
+         }
+   useEffect(() => filterHandler(), [region, countries])
+
+
    return (
       <CountriesContainer>
-         <Country>
-            <Flag />
-            <CountryInfo>
-               <h3>Germany</h3>
-               <p><span>Population:</span> 81,770,900</p> 
-               <p><span>Region:</span> Europe</p>
-               <p><span>Capital:</span> Berlin</p>
-            </CountryInfo>
-         </Country>
-         <Country>
-            <Flag />
-            <CountryInfo>
-               <h3>USA</h3>
-               <p><span>Population:</span> 81,770,900</p> 
-               <p><span>Region:</span> Europe</p>
-               <p><span>Capital:</span> Berlin</p>
-            </CountryInfo>
-         </Country>
-         <Country>
-            <Flag />
-            <CountryInfo>
-               <h3>BRAZIL</h3>
-               <p><span>Population:</span> 81,770,900</p> 
-               <p><span>Region:</span> Europe</p>
-               <p><span>Capital:</span> Berlin</p>
-            </CountryInfo>
-         </Country>
-         <Country>
-            <Flag />
-            <CountryInfo>
-               <h3>BRAZIL</h3>
-               <p><span>Population:</span> 81,770,900</p> 
-               <p><span>Region:</span> Europe</p>
-               <p><span>Capital:</span> Berlin</p>
-            </CountryInfo>
-         </Country>
+         {filteredCountries.map(country => (
+            <Country key={country.numericCode} country={country} />
+         ))}
       </CountriesContainer>
    );
 };

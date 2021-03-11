@@ -18,7 +18,7 @@ export const CountriesContainer = styled.div`
    }
 `
 
-export const Country = styled.div`
+export const CountryElement = styled.div`
    display: flex;
    flex-direction: column;
 
