@@ -1,15 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { CountriesContainer } from './styles';
 import Country from './Country';
-import { FaRegHandPointDown } from 'react-icons/fa';
 
-const Countries = ({ countries, region }) => {
-
-   const [filteredCountries, setFilteredCountries] = useState([]);
-   console.log(countries); 
-   console.log(filteredCountries);
-   console.log(region);
-
+const Countries = ({ countries, region, filteredCountries, setFilteredCountries }) => {
 
    const filterHandler = () => {
       switch(region) {
@@ -31,10 +24,10 @@ const Countries = ({ countries, region }) => {
          default:
             setFilteredCountries(countries);
             break;
-      }
-         }
-   useEffect(() => filterHandler(), [region, countries])
+      };
+   };
 
+   useEffect(() => filterHandler(), [region, countries])
 
    return (
       <CountriesContainer>
