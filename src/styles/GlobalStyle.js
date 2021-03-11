@@ -14,6 +14,6 @@ export default createGlobalStyle`
 
    body {
       font-family: "Nunito Sans", sans-serif;
-      background-color: hsl(0, 0%, 98%);
+      background-color: ${props => props.theme.body};
    }
 `

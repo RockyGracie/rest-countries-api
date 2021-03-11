@@ -5,9 +5,9 @@ export const HeaderStyle = styled.header`
    justify-content: space-between;
    padding: 1.875rem 0.9375rem;
 
-   color: hsl(200, 15%, 8%);
+   color: ${props => props.theme.fontColor};
    font-weight: 800;
-   background-color: #fff;
+   background-color: ${props => props.theme.background};
    box-shadow: 0 8px 8px rgba(0, 0, 0, .1);
 
    button {

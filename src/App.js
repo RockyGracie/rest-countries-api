@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './styles/themes';
 
 import GlobalStyle from './styles/GlobalStyle';
 import Header from './components/Header';
@@ -11,6 +13,13 @@ const App = () => {
   const [region, setRegion] = useState('Africa');
   const [country, setCountry] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [theme, setTheme] = useState('light');
+
+  console.log(theme);
+
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
 
   useEffect(() => {
     fetchData();
@@ -24,9 +33,11 @@ const App = () => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
-      <Header />
+      <Header 
+        themeToggler={themeToggler}  
+      />
       <Search 
         setRegion={setRegion}
         country={country}
@@ -39,7 +50,7 @@ const App = () => {
         setFilteredCountries={setFilteredCountries}    
         filteredCountries={filteredCountries}    
       />
-    </>
+    </ThemeProvider>
   );
 };
 

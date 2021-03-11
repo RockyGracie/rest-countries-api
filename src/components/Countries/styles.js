@@ -37,6 +37,7 @@ export const CountryElement = styled.div`
 export const CountryInfo = styled.div`
    flex: 50%;
    padding: 1.875rem;
+   color: ${props => props.theme.fontColor};
 
    h3 { margin-bottom: 0.75rem }
 
