@@ -3,7 +3,10 @@ import { MdArrowDropDown } from 'react-icons/md'
 
 import { SearchStyles, Select } from './styles';
 
-const Search = () => {
+const Search = ({ setRegion, setFilteredCountries }) => {
+
+   
+   
    return (
       <SearchStyles>
          <form>
@@ -16,12 +19,12 @@ const Search = () => {
             />
          </form>
          <Select>
-            <select>
-               <option value="africa">Africa</option>
-               <option value="america">America</option>
-               <option value="asia">Asia</option>
-               <option value="europe">Europe</option>
-               <option value="oceania">Oceania</option>
+            <select onChange={(e) => setRegion(e.target.value)}>
+               <option value="Africa">Africa</option>
+               <option value="Americas">Americas</option>
+               <option value="Asia">Asia</option>
+               <option value="Europe">Europe</option>
+               <option value="Oceania">Oceania</option>
             </select>
             <MdArrowDropDown />
          </Select>
